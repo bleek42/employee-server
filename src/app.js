@@ -6,9 +6,9 @@ const cors = require('cors');
 const helmet = require('helmet');
 
 const { NODE_ENV } = require('./config');
+const employeeRouter = require('./routes/employee-route');
 
 const errorHandler = require('./middleware/error-handler');
-
 const validateToken = require('./middleware/validate-token');
 
 const app = express();
@@ -22,6 +22,7 @@ app.use(cors());
 app.use(errorHandler);
 app.use(validateToken);
 
+app.use(employeeRouter);
 // request handling
 app.get('/', (req, res) => {
   res.status(200).send('Hello, world!');
