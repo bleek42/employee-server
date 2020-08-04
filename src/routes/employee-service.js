@@ -1,18 +1,9 @@
-const db = require('knex');
-
 const EmployeeService = {
   getAll(db) {
-    return db
-      .from('employee')
-      .select(
-        'employee.id',
-        'employee.name',
-        'employee.age',
-        'employee.address',
-        'employee.city',
-        'employee.phone',
-        'employee.department'
-      );
+    return db.select('*').from('employee');
+  },
+  getById(db, id) {
+    return db.select('*').from('employee').where({ id }).first();
   },
 };
 

@@ -13,7 +13,7 @@ employeeRouter.get('/employee', async (req, res, next) => {
       res.status(400).json({
         error: 'Cannot GET employees!',
       });
-      res.status(200).json({ employees });
+      res.status(200).json(employees);
       next();
     }
   } catch (err) {
@@ -24,7 +24,7 @@ employeeRouter.get('/employee', async (req, res, next) => {
 employeeRouter.get('/employee/:id', async (req, res, next) => {
   try {
     const { id } = req.params.id;
-    const person = await EmployeeService.getEmployee(req.app.get('db'), id);
+    const person = await EmployeeService.getById(req.app.get('db'), id);
     if (!person) {
       logger.error(`cannot find an employee with id ${id}`);
       res.status(400).json({
