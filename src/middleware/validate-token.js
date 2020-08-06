@@ -1,4 +1,5 @@
 const logger = require('./logger');
+const { API_TOKEN } = require('../config');
 
 const validateToken = (req, res, next) => {
   const apiToken = process.env.API_TOKEN;
