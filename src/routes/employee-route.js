@@ -13,10 +13,9 @@ employeeRouter.route('/employee').get(async (req, res, next) => {
       res.status(400).json({
         error: 'Cannot GET employees!',
       });
-      console.log(employees);
-      res.status(200).json(employees);
-      next();
     }
+    console.log(employees);
+    res.status(200).json(employees);
   } catch (err) {
     next(err);
   }
